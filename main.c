@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #define filas 5
 #define columnas 5
 #define pared '*'
@@ -7,10 +8,69 @@
 #define dest 'D'
 
 typedef struct
+{
+  int x;
+  int y;
+} Posicion;
+
+typedef struct Nodo
+{
+  Posicion pos;
+  struct Nodo* siguiente;
+} Nodo;
+
+typedef struct
+{
+  Nodo* inicio;
+  Nodo* final;
+} Cola;
+
+Cola* crearCola()
+{
+  Cola* nuevaCola = (Cola*)malloc(sizeof(Cola));
+
+  nuevaCola->inicio = NULL;
+  nuevaCola->final = NULL;
+
+  return nuevaCola;
+};
+
+void encolar(Cola* cola, Posicion posicion)
+{
+  Nodo* nuevoNodo = (Nodo*)malloc(sizeof(Nodo));
+
+  nuevoNodo->pos = posicion;
+  nuevoNodo->siguiente = NULL;
+
+  if (cola->inicio == NULL)
   {
-    int x;
-    int y;
-  } Posicion;
+    cola->inicio = nuevoNodo;
+    cola->final = nuevoNodo;
+  }
+  else
+  {
+    cola->final->siguiente = nuevoNodo;
+    cola->final = nuevoNodo;
+  };
+};
+
+int estaVacia(Cola* cola) {
+  return cola->inicio == NULL;
+}
+
+Posicion desencolar(Cola* cola) {
+  Nodo* nodoAEliminar = cola->inicio;
+  Posicion pos = nodoAEliminar->pos;
+  cola->inicio = nodoAEliminar->siguiente;
+
+  if(cola->inicio == NULL) {
+    cola->final = NULL;
+  };
+
+  free(nodoAEliminar);
+
+  return pos;
+};
 
 void inicializarMapa(char mapa[filas][columnas], Posicion robot, Posicion destino)
 {
