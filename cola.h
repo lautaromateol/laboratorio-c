@@ -2,7 +2,7 @@
 #define COLA_H
 #include <stdbool.h>
 
-typedef struct {
+typedef struct Posicion {
   int x;
   int y;
 } Posicion;
@@ -22,5 +22,6 @@ void encolar(Cola* cola, Posicion posicion);
 Posicion desencolar(Cola* cola);
 bool estaVacia(Cola* cola);
 void liberarCola(Cola* cola);
+
 
 #endif
