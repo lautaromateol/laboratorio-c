@@ -6,6 +6,7 @@
 #define columnas 5
 #define pared '*'
 #define libre '.'
+#define recorrido '+'
 #define rob 'R'
 #define dest 'D'
 
