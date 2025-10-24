@@ -2,8 +2,8 @@
 #define MAPA_H
 #include "cola.h"
 
-#define filas 5
-#define columnas 5
+#define filas 10
+#define columnas 10
 #define pared '*'
 #define libre '.'
 #define recorrido '+'
