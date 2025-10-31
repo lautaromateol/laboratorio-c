@@ -5,6 +5,12 @@
 
 int main()
 {
+
+    printf("Ingrese el numero de filas: ");
+    scanf("%d", &filas);
+    printf("Ingrese el numero de columnas: ");
+    scanf("%d", &columnas);
+
     int robot_x;
     int robot_y;
     int destino_x;
@@ -58,11 +64,6 @@ int main()
         int vx[] = {-1, 1, 0, 0};
         int vy[] = {0, 0, -1, 1};
 
-        /*
-        actual: (1, 2)
-        vecinos: (1, 3)
-        */
-
         for (int i = 0; i < 4; i++)
         {
             Posicion vecino = {actual.x + vx[i], actual.y + vy[i]};
@@ -84,7 +85,6 @@ int main()
 
     Posicion camino[filas * columnas];
     int pasos = 0;
-    camino[pasos++] = destino;
     int i = destino.x;
     int j = destino.y;
     while (i != -1 && j != -1)
