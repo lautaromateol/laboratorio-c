@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include "mapa.h"
 
+int filas;
+int columnas;
+
 void inicializarMapa(char mapa[filas][columnas], Posicion robot, Posicion destino)
 {
   static int inicializado = 0;
